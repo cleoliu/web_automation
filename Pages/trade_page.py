@@ -3,7 +3,7 @@ from Pages.base_page import BasePage
 import time
 
 
-class TestTrade(BasePage):
+class TradePages(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
         self.get_page("https://www.twse.com.tw/zh/index.html")
