@@ -8,7 +8,6 @@ class TradePages(BasePage):
         super().__init__(driver)
         self.get_page("https://www.twse.com.tw/zh/index.html")
 
-
     def trading_information(self):
         self.move(HomePageLocators.trading_information)
         self.move(HomePageLocators.daily_closing_price)
