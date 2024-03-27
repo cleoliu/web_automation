@@ -6,10 +6,11 @@ from selenium.webdriver.support.select import Select
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 
+
 class BasePage:
     def __init__(self, driver):
         self.driver = driver
-        
+
         self.set_window_size((1440, 768))
         self.timeout = 20
 
@@ -50,7 +51,7 @@ class BasePage:
         """
         element = self.find_element(locator)
         ActionChains(self.driver).move_to_element(element).perform()
-        
+
     def click(self, locator: tuple):
         """點擊元件
 
@@ -76,7 +77,6 @@ class BasePage:
             value (_type_): value
         """
         Select(self.find_element(locator)).select_by_value(value)
-
 
     def get_screenshot_as_file(self, filename: str):
         """截圖
