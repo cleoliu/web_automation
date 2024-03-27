@@ -1,11 +1,11 @@
 from selenium.webdriver.common.by import By
 
 
-class HomePageLocators:
+class HomePage:
     trading_information = (By.XPATH, '/html/body/div[1]/header/nav/ul/li[2]/a')
     daily_closing_price = (By.XPATH, '/html/body/div[1]/header/nav/ul/li[2]/div/div/ul[1]/li[10]/a')
 
-class DailyClosingPrice:
+class DailyClosingPricePage:
     select_y =  (By.NAME, "yy")
     select_m =  (By.NAME, "mm")
     stock_no = (By.NAME, "stockNo")

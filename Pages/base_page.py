@@ -13,6 +13,14 @@ class BasePage:
         self.set_window_size((1440, 768))
         self.timeout = 20
 
+    def set_window_size(self, window_size: tuple):
+        """設定 window size
+
+        Args:
+            window_size (tuple): window size
+        """
+        self.driver.set_window_size(window_size[0], window_size[1])
+
     def get_page(self, url: str):
         """打開頁面
 
@@ -35,6 +43,11 @@ class BasePage:
         )
 
     def move(self, locator: tuple):
+        """滑鼠移動至元素
+
+        Args:
+            locator (tuple): locator
+        """
         element = self.find_element(locator)
         ActionChains(self.driver).move_to_element(element).perform()
         
@@ -56,23 +69,42 @@ class BasePage:
         self.find_element(locator).send_keys(text)
 
     def select_by_value(self, locator: tuple, value):
+        """下拉選單 by value
+
+        Args:
+            locator (tuple): locator
+            value (_type_): value
+        """
         Select(self.find_element(locator)).select_by_value(value)
 
-    def set_window_size(self, window_size: tuple):
-        self.driver.set_window_size(window_size[0], window_size[1])
 
     def get_screenshot_as_file(self, filename: str):
+        """截圖
+
+        Args:
+            filename (str): filename
+        """
         self.driver.get_screenshot_as_file(filename)
 
     def scroll_into_view(self, locator: tuple):
-        """
-        滾動到出現指定元素
+        """滾動到出現指定元素
+
+        Args:
+            locator (tuple): locator
         """
         eles = self.find_element(locator)
         self.driver.execute_script("arguments[0].scrollIntoView();", eles)
         time.sleep(5)
 
-    def get_td(self, locator):
+    def get_td_text(self, locator: tuple) -> list:
+        """取得 table 裡 td 的 text 內容
+
+        Args:
+            locator (tuple): locator
+
+        Returns:
+            list: table 裡 td 的 text 內容
+        """
         table_element = self.find_element(locator)
         td_elements = table_element.find_elements(By.TAG_NAME, "td")
 
